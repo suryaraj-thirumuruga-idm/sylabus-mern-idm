@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Syllabus 2025</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    body {
+      background-color: #f9f9f9;
+      padding: 2rem;
+    }
+    h2, h4 {
+      color: #2c3e50;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #0d6efd;
+      color: white;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .dark-mode .accordion-button {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+    .dark-mode .accordion-button:not(.collapsed) {
+      background-color: #0d6efd;
+    }
+    .reset-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+    .form-check-input:checked {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+    .progress-container {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false" onkeydown="return disableInspect(event)" oncopy="showWarning()" onpaste="showWarning()">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">IDM TECHPARK</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="html.html">HTML</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="css.html">CSS</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="boot.html">Bootsrap</a></li>
+
+          <li class="nav-item"><a class="nav-link text-dark fw-bold" href="javascript.html">JavaScript</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="react.html">React</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="nodejs.html">Node.js</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="mongodb.html">MongoDB</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <button class="btn btn-sm btn-outline-danger reset-btn" onclick="resetProgress()">♻️ Reset Progress</button>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>JAVASCRIPT SYLLABUS <span class="text-primary">2025</span></h2>
+      <div><button class="btn btn-dark" onclick="toggleDarkMode()">Toggle Dark Mode 🌙</button></div>
+    </div>
+
+    <input class="form-control mb-3" type="text" placeholder="Search topic..." onkeyup="searchTopics(this.value)">
+
+    <div class="progress-container">
+      <label><strong>Progress:</strong></label>
+      <div class="progress">
+        <div id="progressBar" class="progress-bar bg-success" role="progressbar" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <div class="accordion mt-4" id="syllabusAccordion"></div>
+  </div>
+
+  <script>
+    const syllabus = [
+      { title: "1. JAVASCRIPT – INTRODUCTION", topics: ["What is Javascript?", "Why Javascript", "Internal Javascript", "External Javascript", "Basic Syntax", "Hello World Program"] },
+      { title: "2. JAVASCRIPT - BASICS", topics: ["USE STRICT Keyword", "Variables", "Let,Var,Const", "Difference between Let & Var"] },
+      { title: "3. JAVASCRIPT - DATATYPES", topics: ["Number", "String", "Boolean", "Bigint", "NaN Null", "Type of()"] },
+      { title: "4. THE BOM", topics: ["Alert ,Prompt, Confirm", "Print,Close,Open", "Type Casting", "Numeric Conversion", "String Conversion"] },
+      { title: "5. STRING & MATH OBJECT", topics: ["String", "String Method", "String are Immutable", "Math Object", "Random Numbers"] },
+      { title: "6. OPERATOR", topics: ["Arithmetic Operator", "Assignment Operator", "Comparison Operator", "Logical Operator", "Increment Operator", "Decrement Operator", "Bitwise Operator", "Ternary Operator", "OFFICE VERIFICATION - 30%"] },
+      { title: "7. CONDITIONAL STATEMENT", topics: ["Syntax of all", "If Statement", "Else Statement", "Else if Statement", "Nesting if", "Switch Statement"] },
+      { title: "8. ARRAY", topics: ["What is Array?", "Array Methods", "Add values in Array", "Deleting Values in Array", "Update Values in Array", "multidimensional Array", "Array & Const"] },
+      { title: "9. OBJECTS", topics: ["What is Object", "Syntax of Objects", "Nesting Objects", "Array of Object"] },
+      { title: "10. LOOPING STATEMENT", topics: ["For Loop", "Do While Loop", "Break Keyword", "Loop Over Array", "For-Of For-in", "ForEach, Map, Reduce", "OFFICE VERIFICATION - 60%"] },
+      { title: "11. FUNCTION", topics: ["What is Function", "Function Syntax", "Local & Global Variable", "Arguments", "Return Keyword", "Callback Function", "Arrow Function", "Set intervals,Set timeout", "clear interval , clear timeout"] },
+      { title: "12. THE DOM", topics: ["What is DOM", "Print \"HELLO WORLD!\"", "GetElementById()", "GetElementByClass()", "GetElementByTagName()", "Queryselector & Query selector all"] },
+      { title: "13. CHANGING CONTENT", topics: ["InnerHTML,InnerTEXT ,Textcontent"] },
+      { title: "14. CHANGING ATTRIBUTES", topics: ["GetAttributes(name)", "SetAttributes(name,value)", "classlist.add()", "classlist.remove()", "Creating Elements", "Append & Insert the elements"] },
+      { title: "15. DOM NAVIGATION", topics: ["Parent Node", "Child Node", "Next Sibling", "Previous Sibling", "OFFICE VERIFICATION - 75%"] },
+      { title: "16. JAVASCRIPT - OOPS", topics: ["Abstraction", "Constructor function", "Prototypes", "Inheritance", "Encapsulation", "Polymorphism"] },
+      { title: "17. EXCEPTION HANDLING", topics: ["Try - Catch,Finally,Throw", "ASYNC - AWAIT"] },
+      { title: "18. GENERAL METHODS", topics: ["Date Get, Set method", "Number Method"] },
+      { title: "19. EVENT HANDLING", topics: ["Mouse", "Click, DBclick", "Mousedown, Mouseup", "Mousemove, Mouseover", "Mouseout", "Keyboard Events", "Keydown,keyup,keypress", "Form Events", "Submit,Reset,Change,Focus,Blur", "Document/Window Events", "Load,Unload,Resize,Scroll", "Clipboard Events", "Cut,Copy,Paste"] },
+      { title: "20. JS PROJECTS", topics: ["CREATING COUNTDOWN", "FORM VALIDATION", "OFFICE VERIFICATION - 100%"] }
+    ];
+
+    const container = document.querySelector('#syllabusAccordion');
+    const checkboxStates = JSON.parse(localStorage.getItem('checkboxStatesJS') || '{}');
+
+    syllabus.forEach((item, index) => {
+      const id = `item${index+1}`;
+      const isFirst = index === 0 ? 'show' : '';
+      const accordionItem = document.createElement('div');
+      accordionItem.className = 'accordion-item';
+
+      accordionItem.innerHTML = `
+        <h2 class="accordion-header">
+          <button class="accordion-button ${isFirst ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#${id}">
+            ${item.title}
+          </button>
+        </h2>
+        <div id="${id}" class="accordion-collapse collapse ${isFirst}" data-bs-parent="#syllabusAccordion">
+          <div class="accordion-body">
+            <ul class="list-group">
+              ${item.topics.map((topic, tIndex) => {
+                const key = `${index}-${tIndex}`;
+                const checked = checkboxStates[key] ? 'checked' : '';
+                return `<li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span>${topic}</span>
+                  <input class="form-check-input syllabus-check" data-key="${key}" type="checkbox" ${checked}>
+                </li>`;
+              }).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+      container.appendChild(accordionItem);
+    });
+
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('.syllabus-check');
+      let checkedCount = 0;
+      const states = {};
+      checkboxes.forEach(chk => {
+        if (chk.checked) checkedCount++;
+        states[chk.dataset.key] = chk.checked;
+      });
+      localStorage.setItem('checkboxStatesJS', JSON.stringify(states));
+      const percent = Math.round((checkedCount / checkboxes.length) * 100);
+      const bar = document.getElementById('progressBar');
+      bar.style.width = percent + '%';
+      bar.textContent = percent + '%';
+    }
+
+    setTimeout(() => {
+      document.querySelectorAll('.syllabus-check').forEach(chk => chk.addEventListener('change', updateProgress));
+      updateProgress();
+    }, 500);
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function showWarning() {
+      Swal.fire({ icon: 'warning', title: 'Action Blocked!', text: 'This action is not allowed on this page.', confirmButtonText: 'OK' });
+    }
+
+    function disableInspect(e) {
+      if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+        showWarning();
+        return false;
+      }
+    }
+
+    function searchTopics(query) {
+      document.querySelectorAll('.accordion-item').forEach(card => {
+        card.style.display = card.textContent.toLowerCase().includes(query.toLowerCase()) ? '' : 'none';
+      });
+    }
+
+    function resetProgress() {
+      Swal.fire({
+        title: 'Reset Progress?',
+        text: 'This will clear all your progress data.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, reset it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('checkboxStatesJS');
+          location.reload();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

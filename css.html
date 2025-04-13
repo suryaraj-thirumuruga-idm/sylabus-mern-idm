@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Syllabus 2025</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      padding: 2rem;
+    }
+    h2, h4 {
+      color: #2c3e50;
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: #0d6efd;
+      color: white;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .dark-mode .accordion-button {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+    .dark-mode .accordion-button:not(.collapsed) {
+      background-color: #0d6efd;
+    }
+    .print-btn, .reset-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      margin-left: 5px;
+    }
+    .reset-btn { right: 80px; }
+    .form-check-input:checked {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+    .progress-container {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false" onkeydown="return disableInspect(event)" oncopy="showWarning()" onpaste="showWarning()">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">IDM TECHPARK</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="html.html">HTML</a></li>
+          <li class="nav-item"><a class="nav-link text-dark fw-bold" href="css.html">CSS</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="boot.html">Bootsrap</a></li>
+
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="javascript.html">JavaScript</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="react.html">React</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="nodejs.html">Node.js</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="mongodb.html">MongoDB</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <button class="btn btn-sm btn-outline-primary print-btn" onclick="window.print()">🖨️ Print</button>
+    <button class="btn btn-sm btn-outline-danger reset-btn" onclick="resetProgress()">♻️ Reset</button>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>CSS SYLLABUS <span class="text-primary">2025</span></h2>
+      <button class="btn btn-dark" onclick="toggleDarkMode()">Toggle Dark Mode 🌙</button>
+    </div>
+
+    <!-- <div class="mb-3"><strong>Tutor Name:</strong> __________ &nbsp;&nbsp; <strong>Student Name:</strong> __________</div> -->
+
+    <input class="form-control mb-3" type="text" placeholder="Search topic..." onkeyup="searchTopics(this.value)">
+
+    <div class="progress-container">
+      <label><strong>Progress:</strong></label>
+      <div class="progress">
+        <div id="progressBar" class="progress-bar bg-success" role="progressbar" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <div class="accordion mt-4" id="syllabusAccordion"></div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const syllabus = [
+      { title: "1. CSS – INTRODUCTION", topics: ["What is CSS?", "Why CSS?", "CSS Syntax"] },
+      { title: "2. LINK CSS FILE", topics: ["Inline CSS", "Internal CSS", "External CSS", "Multiple Stylesheets", "Comments in CSS"] },
+      { title: "3. CSS SELECTORS", topics: ["Element Selector", "ID Selector", "Class Selector", "Universal Selector", "Grouping Selector"] },
+      { title: "4. CSS COMBINATORS", topics: ["Descendant Selector", "Child Selector", "Adjacent Sibling Selector", "General Sibling Selector", "OFFICE VERIFICATION - 30%"] },
+      { title: "5. CSS COLORS", topics: ["Standard Color Names", "RGB, HEX", "RGBA"] },
+      { title: "6. BACKGROUND PROPERTIES", topics: ["Background Color", "Background Image", "Background-size", "Background Repeat", "Background Attachment", "Shorthand Properties"] },
+      { title: "7. BORDERS", topics: ["Border Styles", "Border Width", "Border Color", "Shorthand Properties", "Radius Property", "Box shadow Spread blur"] },
+      { title: "8. DIMENSION OF ELEMENTS", topics: ["Margin and Padding", "Height and Width", "Box Model and Float"] },
+      { title: "9. WORKING WITH TEXT", topics: ["Align and Decoration", "Letter & Word Spacing", "Line Height & Shadow", "Font Style, Weight", "Size, Family", "Indentation & Transform"] },
+      { title: "10. STYLE HTML ELEMENTS", topics: ["Style Table, Button, Link, Form", "Style List", "CSS Attribute Selector"] },
+      { title: "11. PSEUDO CLASSES & ELEMENTS", topics: ["Pseudo Classes", "Hover Tooltip", "Change Other Element Style", "Pseudo Elements"] },
+      { title: "12. CURSOR", topics: ["Help, Pointer", "Move, Resize", "Text, Wait, Default"] },
+      { title: "13. CSS LAYOUT PROPERTIES", topics: ["Display", "Max-width", "Position", "z-index", "Overflow"] },
+      { title: "14. NAVIGATION BAR", topics: ["Vertical", "Horizontal", "Fixed Navbar", "Dropdowns"] },
+      { title: "15. IMAGES IN CSS", topics: ["Opacity", "CSS Units", "Important Rule", "Masking"] },
+      { title: "16. FLEXBOX", topics: ["Flex, Direction", "Justify & Align", "Spacing Variants"] },
+      { title: "17. 2D TRANSFORM", topics: ["Translate", "Skew", "Scale", "Rotate"] },
+      { title: "18. ANIMATION", topics: ["Name, Delay", "Duration, Direction", "Timing, Count"] },
+      { title: "19. GRID", topics: ["Grid Intro", "Grid Container", "Grid Item"] },
+      { title: "20. COLUMN", topics: ["Count", "Gap", "Rule", "Rule Color", "Rule Width"] },
+      { title: "21. RESPONSIVE DESIGN", topics: ["Media Queries", "OFFICE VERIFICATION - 100%"] },
+    ];
+
+    const container = document.getElementById('syllabusAccordion');
+    const checkboxStates = JSON.parse(localStorage.getItem('cssCheckboxStates') || '{}');
+
+    syllabus.forEach((item, index) => {
+      const id = `item${index}`;
+      const accordionItem = document.createElement('div');
+      accordionItem.className = 'accordion-item';
+
+      accordionItem.innerHTML = `
+        <h2 class="accordion-header">
+          <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#${id}">
+            ${item.title}
+          </button>
+        </h2>
+        <div id="${id}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" data-bs-parent="#syllabusAccordion">
+          <div class="accordion-body">
+            <ul class="list-group">
+              ${item.topics.map((topic, tIndex) => {
+                const key = `${index}-${tIndex}`;
+                const checked = checkboxStates[key] ? 'checked' : '';
+                return `<li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span>${topic}</span>
+                  <input class="form-check-input syllabus-check" data-key="${key}" type="checkbox" ${checked}>
+                </li>`;
+              }).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+      container.appendChild(accordionItem);
+    });
+
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('.syllabus-check');
+      let checkedCount = 0;
+      const states = {};
+      checkboxes.forEach(chk => {
+        if (chk.checked) checkedCount++;
+        states[chk.dataset.key] = chk.checked;
+      });
+      localStorage.setItem('cssCheckboxStates', JSON.stringify(states));
+      const percent = Math.round((checkedCount / checkboxes.length) * 100);
+      const bar = document.getElementById('progressBar');
+      bar.style.width = percent + '%';
+      bar.textContent = percent + '%';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const allCheckboxes = document.querySelectorAll('.syllabus-check');
+      allCheckboxes.forEach(chk => chk.addEventListener('change', updateProgress));
+      updateProgress();
+    });
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function showWarning() {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Action Blocked!',
+        text: 'This action is not allowed on this page.',
+        confirmButtonText: 'OK'
+      });
+    }
+
+    function disableInspect(e) {
+      if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && [73, 67, 74].includes(e.keyCode)) || (e.ctrlKey && e.keyCode == 85)) {
+        showWarning();
+        return false;
+      }
+    }
+
+    function searchTopics(query) {
+      const cards = document.querySelectorAll('.accordion-item');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(query.toLowerCase()) ? '' : 'none';
+      });
+    }
+
+    function resetProgress() {
+      Swal.fire({
+        title: 'Reset Progress?',
+        text: 'All saved progress will be lost.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, reset it!'
+      }).then(result => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('cssCheckboxStates');
+          location.reload();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
