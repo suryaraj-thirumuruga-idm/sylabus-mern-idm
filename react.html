@@ -62,10 +62,14 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link text-light fw-bold" href="html.html">HTML</a></li>
           <li class="nav-item"><a class="nav-link text-light fw-bold" href="css.html">CSS</a></li>
+          <li class="nav-item"><a class="nav-link text-light fw-bold" href="boot.html">Bootsrap</a></li>
           <li class="nav-item"><a class="nav-link text-light fw-bold" href="javascript.html">JavaScript</a></li>
           <li class="nav-item"><a class="nav-link text-dark fw-bold" href="react.html">React</a></li>
           <li class="nav-item"><a class="nav-link text-light fw-bold" href="nodejs.html">Node.js</a></li>
           <li class="nav-item"><a class="nav-link text-light fw-bold" href="mongodb.html">MongoDB</a></li>
+          <button id="logoutBtn" class="btn btn-danger">Logout</button>
+
+
         </ul>
       </div>
     </div>
@@ -203,6 +207,37 @@
         }
       });
     }
+    function resetProgress() {
+      Swal.fire({
+        title: 'Reset Progress?',
+        text: 'This will clear all your progress data.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, reset it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('checkboxStates');
+          location.reload();
+        }
+      });
+    }
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+    // Clear localStorage or specific login key
+    localStorage.removeItem("isLoggedIn");
+
+    // SweetAlert logout message
+    Swal.fire({
+      icon: 'success',
+      title: 'Logged out!',
+      text: 'You have been successfully logged out.',
+      timer: 2000,
+      showConfirmButton: false,
+      willClose: () => {
+        // Redirect to login page
+        window.location.href = "index.html";
+      }
+    });
+  });
   </script>
 </body>
 </html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - IDM TECHPARK</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
+    <h3 class="text-center mb-4">Create an Account</h3>
+    <input type="text" id="name" class="form-control mb-2" placeholder="Full Name">
+    <input type="email" id="email" class="form-control mb-2" placeholder="Email">
+    <input type="text" id="mobile" class="form-control mb-2" placeholder="Mobile Number">
+    <input type="password" id="password" class="form-control mb-2" placeholder="Password">
+    <input type="password" id="confirmPassword" class="form-control mb-3" placeholder="Confirm Password">
+    <button class="btn btn-primary w-100" onclick="registerUser()">Register</button>
+    <a href="index.html" class="btn btn-link mt-2">Back to Login</a>
+  </div>
+
+  <script>
+    const API_URL = "https://6427ac13161067a83bfeffb4.mockapi.io/syllabus-api";
+
+    function isStrongPassword(password) {
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+      return regex.test(password);
+    }
+
+    async function registerUser() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mobile = document.getElementById("mobile").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (!name || !email || !mobile || !password || !confirmPassword) {
+        return Swal.fire("All fields are required!", "", "warning");
+      }
+
+      if (!isStrongPassword(password)) {
+        return Swal.fire("Weak Password", 
+          "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.", 
+          "warning");
+      }
+
+      if (password !== confirmPassword) {
+        return Swal.fire("Passwords do not match!", "", "error");
+      }
+
+      try {
+        const checkResponse = await fetch(API_URL);
+        const existingUsers = await checkResponse.json();
+        const existingUser = existingUsers.find(user => user.email === email);
+
+        if (existingUser) {
+          return Swal.fire({
+            icon: "info",
+            title: "User Already Registered",
+            text: "Please login or use a different email.",
+          });
+        }
+
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, mobile, password })
+        });
+
+        if (res.ok) {
+          Swal.fire({
+            icon: "success",
+            title: "Registration Successful",
+            timer: 1500,
+            showConfirmButton: false
+          }).then(() => window.location.href = "index.html");
+        } else {
+          Swal.fire("Registration failed", "Try again later", "error");
+        }
+      } catch (error) {
+        Swal.fire("Error", "Unable to connect to server", "error");
+      }
+    }
+
+     // Disable right-click
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    showWarning();
+  });
+
+  // Disable cut, copy, paste
+  ['cut', 'copy', 'paste'].forEach(evt =>
+    document.addEventListener(evt, function (e) {
+      e.preventDefault();
+      showWarning();
+    })
+  );
+
+  // Disable F12, Ctrl+Shift+I/J/U
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && ['I', 'J'].includes(e.key.toUpperCase())) ||
+      (e.ctrlKey && e.key.toUpperCase() === 'U')
+    ) {
+      e.preventDefault();
+      showWarning();
+    }
+  });
+
+  function showWarning() {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Action Blocked!',
+      text: 'This action is not allowed.',
+      confirmButtonText: 'OK'
+    });
+  }
+  </script>
+</body>
+</html>
