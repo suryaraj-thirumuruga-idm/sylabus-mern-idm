@@ -113,20 +113,124 @@
     AOS.init();
 
     const syllabus = [
-      { title: "1. HTML - INTRODUCTION", topics: ["What is web development", "Difference between web design & development", "Get start"] },
-      { title: "2. FUNDAMENTALS", topics: ["Current version.HTML", "Usable editors", "Type of editors", "structure.doc"] },
-      { title: "3. HELLO WORLD", topics: ["Structure of HTML", "Identical of MS-office", "Structure tags", "Block level Element", "Semantic Element", "Inline Element"] },
-      { title: "4. HEAD TAGS", topics: ["Meta attributes", "Charset", "Viewport", "Page refresh", "Title tag", "Style tag", "Script tag", "Link tag", "Fav-icon"] },
-      { title: "5. BODY TAG", topics: ["Body attributes", "Bgcolor", "Link", "Vlink", "Alink"] },
-      { title: "6. BASIC TAGS", topics: ["H group", "Paragraph", "Center", "Bold,strong", "Italic,em.", "Underline , Mark", "Subscript,superscript", "Marquee", "Br,hr", "Pre serve", "Non- breaking", "Font-size , color", "Address, Division", "Span , bdo", "Progress"] },
-      { title: "7. LIST", topics: ["Order list - start,type", "Unorder list", "Nested list", "Description list", "OFFICE VERIFICATION -50%"] },
-      { title: "8. HYPERLINK", topics: ["Anchor tag", "href link", "href mailto", "href telephone", "href whatsapp", "href smsto"] },
-      { title: "9. TABLE", topics: ["Tables", "Table head", "Table body", "Table row", "Table data", "Border", "Cell padding", "Cell spacing", "Width", "Align,valign", "Rowspan, column span"] },
-      { title: "10. FORM", topics: ["Input tag & types", "Text, email, color", "Password, data/month/time", "Radio,checkbox", "File, accept,(img,mp4,pdf)", "Images,src", "Number,min,max", "Range", "Button,submit,reset", "Search", "Url", "File accept", "Form", "Placeholder", "Required", "width(img)", "Value", "For", "Id", "Selected"] },
-      { title: "11. GRAPHIC ELEMENTS", topics: ["Horizontal Tag", "Size", "Width", "No shade", "Image tag: Src, Align, Border, Height, Width, Alt", "Figure Image", "figarCapture", "Video: Src, Loop, Muted, Autoplay, Controls", "Audio: Src, Controls, AutoPlay"] },
-      { title: "12. EMBED TAG", topics: ["Youtube", "Map", "G-form"] },
-      { title: "13. SYMBOLS", topics: ["Quotation", "Less than N-break", "At Trademark", "And", "Copyright", "Greater Than", "OFFICE VERIFICATION -100%"] }
-    ];
+  { title: "1. HTML - INTRODUCTION", topics: [
+    "What is web development",
+    "Difference between web design & development",
+    "Get start"
+  ]},
+  { title: "2. FUNDAMENTALS", topics: [
+    "Current version.HTML",
+    "Usable editors",
+    "Single Line Comment",
+    "Multi Line Comments"
+  ]},
+  { title: "3. HELLO WORLD", topics: [
+    "Structure of HTML",
+    "Identical of MS-office -word",
+    "Structure tags",
+    "Block level Element",
+    "Semantic Element",
+    "Inline Element"
+  ]},
+  { title: "4. HEAD TAGS", topics: [
+    "Meta Attributes",
+    "Charset",
+    "Viewport ,KeyWord",
+    "Description ,Page refresh",
+    "Title tag",
+    "Style tag",
+    "Script tag",
+    "Link tag ,Fav-icon"
+  ]},
+  { title: "5. BODY TAG", topics: [
+    "Header",
+    "Footer",
+    "Body attributes",
+    "Bgcolor",
+    "Link , Vlink , Alink"
+  ]},
+  { title: "6. BASIC TAGS", topics: [
+    "H Group",
+    "Paragraph",
+    "Center",
+    "Bold,strong",
+    "Italic,em.",
+    "Underline , Mark",
+    "Subscript,superscript",
+    "Marquee",
+    "Break , Horizontal",
+    "Preserve",
+    "Non- breaking",
+    "Section",
+    "Address, Division",
+    "Span , bdo",
+    "Progress (Value)",
+    "Button",
+    "Details",
+    "Summary"
+  ]},
+  { title: "7. LIST", topics: [
+    "Order list - start,type",
+    "Unorder list",
+    "Nested list",
+    "Description list",
+    "OFFICE VERIFICATION -50%"
+  ]},
+  { title: "8. HYPERLINK", topics: [
+    "Anger Tag Basic",
+    "Href Language",
+    "Target Type",
+    "Manu Tag , Nav Tag",
+    "Anchor tag",
+    "href link",
+    "href mailto",
+    "href telephone",
+    "href whatsapp",
+    "href smsto"
+  ]},
+  { title: "9. TABLE", topics: [
+    "Table head",
+    "Table body",
+    "Table row",
+    "Table data",
+    "ColGroup, Col Attributes",
+    "Cell padding",
+    "Cell spacing",
+    "Cell Width",
+    "Text-Align",
+    "v-align,Border",
+    "Rowspan, columnspan"
+  ]},
+  { title: "10. FORM", topics: [
+    "Input tag & types","Text, Email, Color","Password, date/Month/Time","Radio,checkbox","File uploading","Images View","Number (Min,max)","Range","Button,submit,reset","Search , Url",
+    "Select , Option , OptionGroup","FieldSet , Legend , TextArea","Form Tag Attributes","For & Id","File accept","Placeholder","Required","width(img)","Value"
+  ]},
+  { title: "11. GRAPHIC ELEMENTS", topics: [
+    "Horizontal Tag Attributes: Size , Width , No shade",
+    "Image tag: Src , Align , Height , width & Alt",
+    "Figure",
+    "Video: Src , Loop , Autoplay , Controls",
+    "Audio: Src , Controls"
+  ]},
+  { title: "12. EMBED TAG", topics: [
+    "Youtube",
+    "Map",
+    "G-form",
+    "Iframe With Another Page"
+  ]},
+  { title: "13. SYMBOLS", topics: [
+    "Quotation",
+    "Less than & Greater Than",
+    "At Trademark",
+    "Copyright"
+  ]},
+  { title: "14. GIT & GITHUB", topics: [
+    "Create Repository",
+    "And Deploy Netlify",
+    "OFFICE VERIFICATION -100%"
+  ]}
+];
+
 
     const container = document.querySelector('#syllabusAccordion');
     const checkboxStates = JSON.parse(localStorage.getItem('checkboxStates') || '{}');
