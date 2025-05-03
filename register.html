@@ -54,11 +54,15 @@
       try {
         const res = await fetch(API_URL);
         const users = await res.json();
-        const userExists = users.some(u => u.email === email);
+        const userExists = users.some(u =>
+  u.name === name &&
+  u.email === email &&
+  u.mobile === mobile
+);
 
-        if (userExists) {
-          return Swal.fire("Already Registered", "This email is already used. Please login.", "info");
-        }
+if (userExists) {
+  return Swal.fire("Already Registered", "This email is already used. Please login.", "info");
+}
 
         const response = await fetch(API_URL, {
           method: "POST",
@@ -67,7 +71,7 @@
         });
 
         if (response.ok) {
-          Swal.fire({ icon: "success", title: "Registration Successful", timer: 1500, showConfirmButton: false })
+          Swal.fire({ icon: "success", title: "Registration Successful", timer: 1000, showConfirmButton: false })
             .then(() => window.location.href = "index.html");
         } else {
           Swal.fire("Registration failed", "Try again later", "error");
